@@ -184,7 +184,16 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
     <div class="col-2">
         <div class="buttons-set">
             <p class="required"><?php echo $this->__('* Required Fields') ?></p>
-            <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
+
+                <?php if($formtype == 1): ?>
+                    <a href="http://www.stargentingrewards.com" class="f-left">
+                <?php else: ?>
+                    <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left">
+                <?php endif; ?>
+
+                <?php echo $this->__('Forgot your password?') ?>
+            </a>
+
             <button type="submit" class="button" onclick="onepageLogin(this)"><span><span><?php echo $this->__('Login') ?></span></span></button>
         </div>
     </div>

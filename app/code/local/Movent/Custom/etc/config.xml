@@ -68,6 +68,11 @@
     </adminhtml>
 	<default>
 		<custom>
+            <cruise_pickup>
+                <enabled>1</enabled>
+                <days_count>2</days_count>
+                <blurb_enabled>1</blurb_enabled>
+            </cruise_pickup>
 			<stargenting>
 				<wsdl_enabled>0</wsdl_enabled>
 				<wsdl_testmode>0</wsdl_testmode>

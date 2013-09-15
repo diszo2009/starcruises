@@ -14,54 +14,55 @@ class Movent_Heared4us_OnepageController extends Inchoo_Heared4us_OnepageControl
     {  
 		$this->_expireAjax();
         if ($this->getRequest()->isPost()) {
+
+
             $pickupData = '';
-        	//Grab the submited value heared for us value
-        	$_pickupCounter = $this->getRequest()->getPost('pickup-counter');
-						
-			$offset = Mage::getStoreConfig('custom/cruise_pickup/days_count');
-			if($offset == ""){
-				// Date should plus 3 days from current date
-				$currDate = date("m/d/Y",strtotime("+1 days"));
-			}else{
-				$currDate = date("m/d/Y",strtotime("+".$offset." days"));
-			} 
-			
-			$result		 					= array();
-			//$pickupData 					= array();
-			$cruise_reservation_numbers  	= $this->getRequest()->getPost('cruise-reservation-number');
-			
-        	for($i = 1; $i <= $_pickupCounter; $i++) {
-        		$_pickupLocation 			= $this->getRequest()->getPost('pickup-location-'.$i);
-        		$_cruiseDate 	 			= $this->getRequest()->getPost('cruise-date-'.$i);
-				$locType 					= Mage::getSingleton('custom/pickupoptions')->getStoreAttributeLocationType($_pickupLocation);	
-				$_pickupLocationVal 		= Mage::getSingleton('custom/pickupoptions')->getStoreLocationByValue($_pickupLocation);
-								
-				if($locType != false && $locType == Movent_Custom_Model_Pickupoptions::LOCATION_TYPE_CRUISE){
-					$storeType = "Cruise";	
-				}
-				else{
-					$storeType = "Pickup";
-				} 
-				
-				$cruise_reservation_number  = isset($cruise_reservation_numbers[$i]) ? $cruise_reservation_numbers[$i] : '';
-				$pickupData[] = array('cruise_date' 				=> $_cruiseDate,
-									  'pickup_location' 			=> $_pickupLocationVal['label'],
-									  'store_type' 					=> $storeType,
-									  'cruise_reservation_number'	=> $cruise_reservation_number); 		
-				
-				if( !(strtotime($_cruiseDate) >= strtotime($currDate))){					
-					$result['message'] = Mage::helper('checkout')->__($storeType.' date value for "'.$_pickupLocationVal['label'].'" is invalid.');
-					$result['error'] = true;
-					echo Zend_Json::encode($result);
-					exit;
-				}
-				
-        	}   
-			
-			//Mage::getSingleton('core/session')->setInchooHeared4us(serialize($pickupData));
-			Mage::getSingleton('core/session')->setPickupCounter($_pickupCounter);
-			
-            $this->getOnepage()->saveHeared4Us($pickupData); 
+            //Grab the submited value heared for us value
+            $_pickupCounter = $this->getRequest()->getPost('pickup-counter');
+
+            $offset = Mage::getStoreConfig('custom/cruise_pickup/days_count');
+            if($offset == ""){
+                // Date should plus 3 days from current date
+                $currDate = date("m/d/Y",strtotime("+1 days"));
+            }else{
+                $currDate = date("m/d/Y",strtotime("+".$offset." days"));
+            }
+
+            $result		 					= array();
+            $cruise_reservation_numbers  	= $this->getRequest()->getPost('cruise-reservation-number');
+
+            for($i = 1; $i <= $_pickupCounter; $i++) {
+                $_pickupLocation 			= $this->getRequest()->getPost('pickup-location-'.$i);
+                $_cruiseDate 	 			= $this->getRequest()->getPost('cruise-date-'.$i);
+                $locType 					= Mage::getSingleton('custom/pickupoptions')->getStoreAttributeLocationType($_pickupLocation);
+                $_pickupLocationVal 		= Mage::getSingleton('custom/pickupoptions')->getStoreLocationByValue($_pickupLocation);
+
+                if($locType != false && $locType == Movent_Custom_Model_Pickupoptions::LOCATION_TYPE_CRUISE){
+                    $storeType = "Cruise";
+                }
+                else{
+                    $storeType = "Pickup";
+                }
+
+                $cruise_reservation_number  = isset($cruise_reservation_numbers[$i]) ? $cruise_reservation_numbers[$i] : '';
+                $pickupData[] = array('cruise_date' => $_cruiseDate,
+                    'pickup_location' 			    => $_pickupLocationVal['label'],
+                    'store_type' 					=> $storeType,
+                    'cruise_reservation_number'	=> $cruise_reservation_number);
+
+                if( !(strtotime($_cruiseDate) >= strtotime($currDate)) && Mage::getStoreConfig('custom/cruise_pickup/enabled') ){
+                    $result['message'] = Mage::helper('checkout')->__($storeType.' date value for "'.$_pickupLocationVal['label'].'" is invalid.');
+                    $result['error'] = true;
+                    echo Zend_Json::encode($result);
+                    exit;
+                }
+
+
+                Mage::getSingleton('core/session')->setPickupCounter($_pickupCounter);
+
+                $this->getOnepage()->saveHeared4Us($pickupData);
+            }
+
 			
             if (!$result) {
                 $this->loadLayout('checkout_onepage_payment');

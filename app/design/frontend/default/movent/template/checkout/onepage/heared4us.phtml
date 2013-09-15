@@ -8,6 +8,8 @@ window.open("http://gentingtravel.starcruises.com")
 
 <?php 
 	$offset = Mage::getStoreConfig('custom/cruise_pickup/days_count');
+    $isEnabled = Mage::getStoreConfig('custom/cruise_pickup/enabled');
+    $isBlurbEnabled = Mage::getStoreConfig('custom/cruise_pickup/blurb_enabled');
 	if($offset == ""){
 		$currDate = "+1d";
 	}else{
@@ -15,6 +17,8 @@ window.open("http://gentingtravel.starcruises.com")
 	}
 ?>
 <form id="co-heared4us-form" action="">
+
+    <?php if($isEnabled) : ?>
 
 	<script>
 	jQuery(function() {
@@ -26,6 +30,15 @@ window.open("http://gentingtravel.starcruises.com")
 		});
 	});jQuery.noConflict();
 	</script>
+    <?php else: ?>
+
+        <script>
+            jQuery(function() {
+                jQuery('#pickupdategroup').hide();
+            });jQuery.noConflict();
+        </script>
+
+    <?php endif; ?>
 	
 <?php 
 	$checkoutSession = Mage::getSingleton('checkout/session');	
@@ -45,7 +58,7 @@ window.open("http://gentingtravel.starcruises.com")
 		<ul class="form-list">
 			<li class="fields">
 				<div class="field">
-					<label for="pickup" style="margin-top: 5px">Items: </label>
+					<label for="pickup" style="margin-top: 5px"><?php echo $this->__('Items')?>: </label>
 					<div class="input-box">
 					
 						<?php foreach($value as $item) : ?>						
@@ -67,7 +80,7 @@ window.open("http://gentingtravel.starcruises.com")
 				</div>
 			</li>
 			<li class="fields">
-		    	<div class="field">
+		    	<div class="field" id="pickupdategroup">
 				
 					<?php if( $cstmOptions->getStoreAttributeLocationType($pickupLocation) == Movent_Custom_Model_Pickupoptions::LOCATION_TYPE_CRUISE) : ?>
 						<label for="cruise-date-<?php echo $pickupCounter?>" class="required"><em>*</em><?php echo $this->__('Your cruise date')?>:</label>
@@ -78,7 +91,7 @@ window.open("http://gentingtravel.starcruises.com")
 					<div class="input-box">
 						<input type="text" class="datepick input-text required-entry" style="border-color: #DDDDDD; cursor: pointer" readonly="readonly" id="cruise-date-<?php echo $pickupCounter?>" name="cruise-date-<?php echo $pickupCounter?>"/>
 						<input type="hidden" id="pickup-location-<?php echo $pickupCounter?>" name="pickup-location-<?php echo $pickupCounter?>" value="<?php echo $pickupLocationInfo['value']?>"/>
-						<input type="hidden" id="pickup-counter" name="pickup-counter" value="<?php echo $pickupCounter?>"/>
+                        <input type="hidden" id="pickup-counter" name="pickup-counter" value="<?php echo $pickupCounter?>"/>
 					</div>
 				</div>
 			</li>	
@@ -89,9 +102,14 @@ window.open("http://gentingtravel.starcruises.com")
 						<input type="text" id="cruise-reservation-number-<?php echo $pickupCounter?>"  name="cruise-reservation-number[<?php echo $pickupCounter?>]" value="<?php echo $this->getCruiseReservationNumber($pickupCounter);?>"/>
 					</div>
 		</div>
-		<div>No cruise booking yet?</div>
-		<div><a href="javascript:void(0);" onclick="open_win()">Book Now</a> and get instant confirmation online.</div> 
-		<hr> 
+        <?php if($isBlurbEnabled) : ?>
+        <br/>
+		<div><?php echo $this->__('No cruise booking yet?')?></div>
+		<div><a href="javascript:void(0);" onclick="open_win()"><?php echo $this->__('Book Now')?></a> <?php echo $this->__('and get instant confirmation online.')?></div>
+		<hr>
+        <?php endif; ?>
+
+
 	<?php $pickupCounter++; endforeach; ?>
 
 
