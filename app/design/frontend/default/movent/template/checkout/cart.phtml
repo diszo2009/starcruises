@@ -164,3 +164,30 @@
         </div>
     </div>
 </div>
+
+<?php if(($message = Mage::getSingleton('checkout/session')->getPopupNotice()) && $message != "") : ?>
+<div id="popNotification" style="display:none; cursor: default; padding:10px;">
+    <div> <?php echo $message ?></div>
+    <div style="padding-top:5px;">
+        <input type="button" id="no" style="padding:5px;" value="<?php echo $this->__('No, keep my existing cart') ?>" />
+        <input type="button" id="yes" style="padding:5px;" value="<?php echo  $this->__('Yes, clear my cart to continue') ?>" />
+    </div>
+</div>
+<script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery.blockUI({ message: jQuery('#popNotification'), centerY: true });
+        jQuery('#yes').click(function() {
+            window.location = "<?php echo Mage::getUrl("checkout/cart/clearandadd") ?>";
+            jQuery.unblockUI();
+        });
+        jQuery('#no').click(function() {
+            jQuery.unblockUI();
+            return false;
+        });
+    });
+
+</script>
+<?php Mage::getSingleton('checkout/session')->setPopupNotice(null) ?>
+<?php endif; ?>
+

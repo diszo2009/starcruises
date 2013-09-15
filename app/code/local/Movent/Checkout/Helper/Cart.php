@@ -50,9 +50,11 @@ class Movent_Checkout_Helper_Cart extends Mage_Checkout_Helper_Cart
 	{ 
 		if(!is_null($this->_product) && $this->_product instanceof Mage_Catalog_Model_Product){
 			if($payment_method == self::PAYMENT_METHOD_CARD){
-				$this->getCart()->getCheckoutSession()->setPopupNotice("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using Credit Card payment?  <a href=\"".$this->getCartUrl()."\"><br/>No, keep my existing cart</a> or <a href=\"".Mage::getUrl("checkout/cart/clearandadd")."\">Yes, clear my cart to continue</a>");
+                $this->getCart()->getCheckoutSession()->setPopupNotice(Mage::helper('checkout')->__("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using Credit Card payment?"));
+                //$this->getCart()->getCheckoutSession()->setPopupNotice("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using Credit Card payment?  <a href=\"".$this->getCartUrl()."\"><br/>No, keep my existing cart</a> or <a href=\"".Mage::getUrl("checkout/cart/clearandadd")."\">Yes, clear my cart to continue</a>");
 			}elseif($payment_method == self::PAYMENT_METHOD_POINTS){
-				$this->getCart()->getCheckoutSession()->setPopupNotice("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using StarGenting points?  <a href=\"".$this->getCartUrl()."\"><br/>No, keep my existing cart</a> or <a href=\"".Mage::getUrl("checkout/cart/clearandadd")."\">Yes, clear my cart to continue</a>");
+                $this->getCart()->getCheckoutSession()->setPopupNotice(Mage::helper('checkout')->__("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using StarGenting points?"));
+                //$this->getCart()->getCheckoutSession()->setPopupNotice("Would you like to clear your existing cart, to continue to purchase <a href=\"".$this->_product->getProductUrl()."\" target=\"_blank\">".$this->_product->getName()."</a> using StarGenting points?  <a href=\"".$this->getCartUrl()."\"><br/>No, keep my existing cart</a> or <a href=\"".Mage::getUrl("checkout/cart/clearandadd")."\">Yes, clear my cart to continue</a>");
 			}else{
 				$this->getCart()->getCheckoutSession()->addNotice('Oooops!');
 			}
