@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Payment
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Movent_Starpay>
+            <version>1.6.0.0</version>
+        </Movent_Starpay>
+    </modules>
+    <global>
+        <models>
+            <starpay>
+                <class>Movent_Starpay_Model</class> 
+            </starpay>
+        </models> 
+        <blocks>
+            <starpay>
+                <class>Movent_Starpay_Block</class>
+            </starpay>
+        </blocks>
+        <helpers>
+            <starpay>
+                <class>Movent_Starpay_Helper</class>
+            </starpay>
+        </helpers>
+        <payment>
+            <starcc>
+                <types>
+                   <AE>
+                        <code>AE</code>
+                        <name>American Express</name>
+                        <order>0</order>
+						<starcode>A</starcode>
+                    </AE>
+                    <VI>
+                        <code>VI</code>
+                        <name>Visa</name>
+                        <order>10</order>
+						<starcode>V</starcode>
+                    </VI>
+                    <MC>
+                        <code>MC</code>
+                        <name>MasterCard</name>
+                        <order>20</order>
+						<starcode>M</starcode>
+                    </MC>
+                   <!-- <DI>
+                        <code>DI</code>
+                        <name>Discover</name>
+                        <order>30</order>
+                    </DI>
+                    <SM>
+                        <code>SM</code>
+                        <name>Maestro/Switch</name>
+                        <order>40</order>
+                    </SM>
+                    <SO>
+                        <code>SO</code>
+                        <name>Solo</name>
+                        <order>45</order>
+                    </SO>
+                   -->
+				   <JCB>
+                        <code>JCB</code>
+                        <name>JCB</name>
+                        <order>50</order>
+						<starcode>J</starcode>
+                    </JCB><!--
+                    <OT>
+                        <code>OT</code>
+                        <name>Other</name>
+                        <order>1000</order>
+                    </OT>-->
+                </types>
+				<paymentmethod>
+					<types>
+						<cc>
+							<code>1</code>
+							<name>Credit Card</name>
+						</cc>
+					</types>
+				</paymentmethod>				
+				<transaction>
+					<types>
+						<sales>
+							<code>1</code>
+							<name>Sales</name>
+						</sales>
+					</types>
+				</transaction>
+            </starcc>
+            <groups>
+                <offline>Offline Payment Methods</offline>
+            </groups>
+        </payment> 
+    </global> 
+	 <default>
+        <payment>
+            <star_ccsave>
+                <active>1</active>
+                <cctypes>AE,VI,MC,DI</cctypes>
+                <model>starpay/method_starccsave</model>
+                <order_status>pending</order_status>
+                <title>Pay by Credit Card</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+				<enable_testmode>1</enable_testmode>
+				<gatewayurl_live><![CDATA[https://epg2.starcruises.com/payment/PaymentInterface.jsp]]></gatewayurl_live>
+				<merchant_id_live>SCB2B2C_LIVE</merchant_id_live>
+				<merchant_password_live>gbdww</merchant_password_live>
+				<gatewayurl_test><![CDATA[https://epgdev.starcruises.com/payment/PaymentInterface.jsp]]></gatewayurl_test>
+				<merchant_id_test>SCM_UAT</merchant_id_test>
+				<merchant_password_test>LHYQV</merchant_password_test> 
+				<paymentmethod>1</paymentmethod> 
+				<transaction>1</transaction> 
+            </star_ccsave>
+        </payment>
+	</default>
+	<frontend> 
+        <routers>
+            <atos>
+                <use>standard</use>
+                <args>
+                    <module>Movent_Starpay</module>
+                    <frontName>starpay</frontName>
+                </args>
+            </atos>
+        </routers>
+	</frontend>
+</config>

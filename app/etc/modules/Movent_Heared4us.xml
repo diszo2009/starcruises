@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_Heared4us>
+            <active>true</active>
+            <codePool>local</codePool>
+			<depends>
+				<Inchoo_Heared4us/>
+			</depends>
+        </Movent_Heared4us>
+    </modules>
+</config>
+

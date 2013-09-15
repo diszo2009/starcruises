@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_Checkout>
+            <version>0.1.0</version>
+        </Movent_Checkout>
+    </modules>
+    <global>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <cart>Movent_Checkout_Block_Cart</cart> 
+                    <onepage>Movent_Checkout_Block_Onepage</onepage> 
+                    <onepage_billing>Movent_Checkout_Block_Onepage_Billing</onepage_billing> 
+                    <onepage_payment>Movent_Checkout_Block_Onepage_Payment</onepage_payment> 
+                    <onepage_payment_methods>Movent_Checkout_Block_Onepage_Payment_Methods</onepage_payment_methods> 
+                    <onepage_progress>Movent_Checkout_Block_Onepage_Progress</onepage_progress> 
+                </rewrite>
+            </checkout>
+        </blocks>
+        <models>
+            <checkout>
+                <rewrite>
+                    <cart>Movent_Checkout_Model_Cart</cart> 
+                    <type_onepage>Movent_Checkout_Model_Type_Onepage</type_onepage> 
+                </rewrite>
+            </checkout>
+        </models> 		
+        <helpers>
+            <checkout>
+                <rewrite>
+                    <cart>Movent_Checkout_Helper_Cart</cart> 
+                </rewrite>
+            </checkout>
+        </helpers>
+        
+    </global>
+    <frontend>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <movent_checkout before="Mage_Checkout">Movent_Checkout</movent_checkout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+</config>

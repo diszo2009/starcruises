@@ -1,0 +1,46 @@
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<?php $_cartQty = $this->getSummaryCount() ?>
+<?php $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+		$totalPoints = 0;
+		foreach ($items as $item) 
+		{
+			$exchange_rate = 1;
+			$discount = 0;
+			if ($item->getParentItemId() == null){
+			$exchange_rate = Mage::getModel('catalog/product')->load($item->getProductId())->getExchange();
+	   		$exchange_rate = floatval($exchange_rate);
+	   		if ($exchange_rate == "")
+    		{
+    		$baseCode = Mage::app()->getBaseCurrencyCode();
+			$allowedCurrencies = Mage::getModel('directory/currency')->getConfigAllowCurrencies(); 
+			$rates = Mage::getModel('directory/currency')->getCurrencyRates($baseCode, array_values($allowedCurrencies));
+ 			$exchange_rate = $rates['PTS'];
+ 			}	
+			$discount += ($item->getDiscountAmount()*$exchange_rate);
+			$totalPoints += floatval(($item->getPoints()*$item->getQty()));
+			}
+		} ?>
+<span class="cart-loading">Loading...</span>
+<div class="cart">
+   	<a href="<?php echo $this->getUrl('checkout/cart') ?>" class="cart-link"><?php print (!empty($_cartQty)) ? $_cartQty : '0' ;?><?php print ($_cartQty>1) ? ' Items, ': ' Item, ' ;?><?php echo $this->__('Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal())." | " ?><?php print (!empty($totalPoints)) ? number_format($totalPoints,2).' Star Points' : '0'.' Star Points'; ?></a>
+	<div class="mtajaxcart">
+		<div class="ajax-container">
+	        <?php
+				$_items = $this->getRecentItems($_cartQty);
+				if(count($_items)):
+			?>
+				<ul>
+	                <?php foreach($_items as $_item): ?>
+	                    <?php echo $this->getItemHtml($_item) ?>
+	                <?php endforeach; ?>
+				</ul>
+				<div class="ajax-checkout">
+					<a href="<?php echo $this->getCheckoutUrl() ?>"><span><?php echo $this->__('Proceed to Checkout') ?></span></a>
+				</div>
+	         <?php else: ?>
+	         	<p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+	         <?php endif ?>
+		</div>
+	</div>
+</div>
+<?php endif ?>

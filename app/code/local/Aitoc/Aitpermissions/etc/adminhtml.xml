@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <aitpermissions translate="title">
+                        <title>Advanced Permissions Tab</title>
+                        <sort_order>10</sort_order>
+                    </aitpermissions>
+                </children>
+            </admin>
+        </resources>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <aitpermissions translate="title" module="aitpermissions">
+                                <title>Advanced Permissions</title>
+                                <sort_order>0</sort_order>
+                            </aitpermissions>
+                            <config>
+                                <children>
+                                    <aitpermissions translate="title" module="aitpermissions">
+                                        <title>Advanced Permissions</title>
+                                    </aitpermissions>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
+<!--
+/**
+ * Product:     Advanced Permissions
+ * Package:     Aitoc_Aitpermissions_2.4.0_2.0.3_467520
+ * Purchase ID: JlNeBKBvSqsIsT7whc80ZpBA38zH86mwW38f4D7p5H
+ * Generated:   2013-01-14 03:56:09
+ * File path:   app/code/local/Aitoc/Aitpermissions/etc/adminhtml.xml
+ * Copyright:   (c) 2013 AITOC, Inc.
+ */
+-->

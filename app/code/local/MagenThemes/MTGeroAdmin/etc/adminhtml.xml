@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+	<magenthemes translate="title" module="mtgeroadmin">
+	    <title>MagenThemes</title>
+	    <sort_order>71</sort_order>
+	    <children>
+		<mtgeroadmin translate="title" module="mtgeroadmin">
+		    <title>MT Gero Admin</title>
+		    <children>
+			<configuration translate="title" module="mtgeroadmin">
+			    <title>Configuration</title>
+			    <sort_order>1</sort_order>
+			    <action>adminhtml/system_config/edit/section/mtgeroadmin</action>
+			</configuration>
+		    </children>
+		</mtgeroadmin>
+	    </children>
+	</magenthemes>
+    </menu>
+    <acl>
+	<resources>
+	    <all>
+			<title>Allow Everything</title>
+		</all>
+	    <admin>
+		<children>
+		    <system>
+			<children>
+			    <config>
+				<children>
+				    <mtgeroadmin>
+					<title>MT Gero Admin</title>
+				    </mtgeroadmin>
+				</children>
+			    </config>
+			</children>
+		    </system>
+		    <magenthemes translate="title" module="mtgeroadmin">
+				<title>MagenThemes</title>
+				<sort_order>71</sort_order>
+				<children>
+					<mtgeroadmin translate="title" module="mtgeroadmin">
+						<title>MT Gero Admin</title>           
+						<children>
+							<configuration translate="title" module="mtgeroadmin">
+								<title>Configuration</title>
+								<sort_order>1</sort_order>
+								<action>adminhtml/system_config/edit/section/mtgeroadmin</action>
+							</configuration>
+						</children>
+					</mtgeroadmin>
+				</children>
+			</magenthemes>
+		</children>
+	    </admin>
+	</resources>
+    </acl>
+</config>

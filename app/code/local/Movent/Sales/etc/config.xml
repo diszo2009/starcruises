@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_Sales>
+        	<version>1.7.0.0</version>
+        </Movent_Sales>
+    </modules>    
+	<global>	
+        <fieldsets> 
+			<sales_convert_quote>
+				<heared4us>
+					<to_order>*</to_order>
+				</heared4us>
+				<giftaid>
+					<to_order>*</to_order>
+				</giftaid>
+			</sales_convert_quote>
+			<sales_convert_order>
+				<heared4us>
+					<to_quote>*</to_quote>
+				</heared4us>
+				<giftaid>
+					<to_quote>*</to_quote>
+				</giftaid>
+			</sales_convert_order>
+		</fieldsets>
+        <models>
+            <sales>
+        		<rewrite>
+        			<order>Movent_Sales_Model_Order</order>
+        			<service_quote>Movent_Sales_Model_Service_Quote</service_quote> 
+        			<quote_address>Movent_Sales_Model_Quote_Address</quote_address> 
+        		</rewrite>
+            </sales>        
+        </models>
+    </global>
+</config>

@@ -1,0 +1,93 @@
+<?php
+/******************************************************
+ * @package MT SlideShow module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.1.1
+ * @author http://www.magentheme.com
+ * @copyright (C) 2011- MagenTheme.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php if(Mage::helper('mtslideshow')->isActive()) : ?>
+	<?php
+		$slide = $this->getDataSlide();
+		$path = Mage::getBaseUrl('media');
+		$w = $slide->getWidth();
+		$h = $slide->getHeight(); 
+	?>
+	<style>
+		.mt_iosslider{
+			width: <?php echo $w;?>px;
+			height: <?php echo $h;?>px;
+		}
+		.mt_iosslider .slider .item {
+			width: <?php echo $w;?>px;
+			height: <?php echo $h;?>px;
+		}
+	</style>
+	<div class="mt_ios-slider-wrapper">
+		<div class="mt_iosslider slider-wrapper">
+			<div class="slider">
+				<?php foreach($slide->getImageList() as $s): ?>
+				<?php $imag = $s['file']; ?>
+				<div class="item">
+					<a href="<?php echo $s['link']; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'js/magenthemes/mtslideshow/timthumb/timthumb.php?src='.$this->helper('mtslideshow/image')->init($s['file']).'&amp;h='.$h.'&amp;w='.$w ?>" title="<?php echo $s['title']; ?>" /></a>
+					<div class="title"><span><?php echo $s['title']; ?></span></div> 
+					<div class="description"><span><?php echo $s['description']; ?></span></div>
+				</div>
+				<?php endforeach; ?> 
+			</div>
+		</div> 
+		<div class="prevButton"></div> 
+		<div class="nextButton"></div>
+	</div>
+	<?php if(count($slide->getImageList()) > 1) :?>
+	<script type="text/javascript">
+		$jq(document).ready(function() {
+			$jq('.mt_iosslider').iosSlider({
+				scrollbar: false,
+				snapToChildren: true,
+				desktopClickDrag: true,
+				scrollbarLocation: 'top',
+				scrollbarMargin: '10px 10px 0 10px',
+				scrollbarBorderRadius: '0',
+				responsiveSlideWidth: true, 
+				infiniteSlider: true,
+				<?php if(Mage::helper('mtslideshow')->isOsAutoplayDefault()>0){?>
+				autoSlide: true,
+				<?php }else{?>
+				autoSlide: true,
+				<?php }?>
+				startAtSlide: '<?php echo Mage::helper('mtslideshow')->isOsStartSlideDefault() ?>',
+				navPrevSelector: $jq('.prevButton'),
+				navNextSelector: $jq('.nextButton'),  
+				onSlideComplete: slideContentComplete,
+				onSliderLoaded: slideContentLoaded
+			});  
+			function slideContentComplete(args) { 
+				/* animation */
+				$jq(args.sliderObject).find('.title, .description').attr('style', '');  
+				$jq(args.currentSlideObject).children('.title').animate({
+					right: '100px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+				$jq(args.currentSlideObject).children('.description').delay(200).animate({
+					right: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+			} 
+			function slideContentLoaded(args) { 
+				/* animation */
+				$jq(args.sliderObject).find('.title, .description').attr('style', ''); 
+				$jq(args.currentSlideObject).children('.title').animate({
+					right: '100px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+				$jq(args.currentSlideObject).children('.description').delay(200).animate({
+					right: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+			} 
+		});
+	</script>
+	<?php endif; ?> 
+<?php endif; ?>

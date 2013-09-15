@@ -1,0 +1,46 @@
+<!-- navigation BOF -->
+<?php 
+$megaeffect = Mage::getStoreConfig('mtgeroadmin/navigation/menu_effect');
+$_menu = $this->renderCategoriesMenuHtml(0, 'level-top', 'sub-wrapper' ) 
+?>
+<?php if($_menu): ?>
+<div class="mt-navigation visible-desktop">
+	<div class="container">
+		<ul id="nav" class="megamenu"> 
+			<?php if(Mage::getStoreConfig('mtgeroadmin/navigation/home')){?>
+			<li class="level0 level-top">
+				<a href="<?php echo $this->getBaseUrl(); ?>"><span><?php echo $this->__('Home'); ?></span></a>
+			</li> 
+			<?php }?>
+			<?php
+			echo $_menu;
+			if(Mage::getStoreConfig('mtgeroadmin/custom_menu/enable_custom')){  
+				$getidentifier = Mage::getStoreConfig('mtgeroadmin/custom_menu/static_identifier');
+				$arrayidentifier = explode("\r\n", $getidentifier); 
+				foreach($arrayidentifier as $mcustom){ 
+					$custom_menu = Mage::getModel('cms/block')->load($mcustom);
+					if($custom_menu->getIsActive()) {
+						echo '
+						<li class="level0 level-top parent custom-block">
+							<a href="#" class="level-top">
+								<span>'.$custom_menu->getTitle().'</span>
+							</a>
+							<div class="sub-wrapper">'.$this->getLayout()->createBlock('cms/block')->setBlockId($mcustom)->toHtml().'</div>
+						</li>';
+					}
+				}
+			}
+			?>
+		</ul>
+	</div>
+</div> 
+<script type="text/javascript"> 
+$mtkb(function(){ 
+	$mtkb(".megamenu").megamenu({
+		'animation':'<?php echo $megaeffect;?>', 
+		'mm_timeout': 150
+	}); 
+});  
+</script>
+<?php endif ?>
+<!-- navigation EOF -->

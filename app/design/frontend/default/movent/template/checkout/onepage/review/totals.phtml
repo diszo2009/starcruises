@@ -1,0 +1,35 @@
+<?php  
+	$payment_method 		   = $this->getQuote()->getPayment()->getMethod();
+	$payment_method_starccsave = 'star_ccsave';
+?>
+<?php if ($this->getTotals()): ?>
+	<tfoot>
+		<?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 5 : 3; ?>
+		<!--?php echo $this->renderTotals(null, $_colspan); ?>-->
+		<?php if ($payment_method == $payment_method_starccsave):  ?>	 
+		<?php echo $this->renderTotals('footer', $_colspan); ?>
+		<?php else: ?>
+		<!--  render grand total points -->
+			<tr>       	
+				<td class="a-right" colspan="3">
+					<strong>Grand Total</strong>
+				</td>
+				<td class="a-right">
+					<strong>
+						<span class="price"><?php echo number_format($this->getTotalPoints(),2)." SP"; ?></span>
+					</strong>
+				</td>
+			 </tr>
+		<?php endif; ?>
+		<?php if ($this->needDisplayBaseGrandtotal()):?>
+		<tr>
+			<td class="a-right" colspan="<?php echo $_colspan; ?>">
+				<small><?php echo $this->helper('sales')->__('Your credit card will be charged for') ?></small>
+			</td>
+			<td class="a-right">
+				<small><?php echo $this->displayBaseGrandtotal() ?></small>
+			</td>
+		</tr>
+		<?php endif?>
+	</tfoot>
+<?php endif; ?>

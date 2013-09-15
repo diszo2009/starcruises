@@ -1,0 +1,461 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+	<magenthemes translate="label" module="mtgeroadmin">
+	    <label>Magenthemes</label>
+	    <sort_order>205</sort_order>
+	</magenthemes>
+    </tabs>
+    <sections>
+        <mtgeroadmin translate="label" module="mtgeroadmin">
+	    <label>MT Gero Admin</label>
+	    <tab>magenthemes</tab>
+	    <sort_order>130</sort_order>
+	    <show_in_default>1</show_in_default>
+	    <show_in_website>1</show_in_website>
+	    <show_in_store>1</show_in_store>
+	    <groups>
+			<mtgeroadmin_appearance translate="label">
+			    <label>General</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>1</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <fields>  
+					<h_font translate="label comment">
+						<label>Heading Font: </label>
+						<comment>This font will be used for font</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_GoogleFont</source_model>  
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</h_font>
+					<b_font translate="label comment">
+						<label>Body Font: </label>
+						<comment>This font will be used for font</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_GoogleFont</source_model>  
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</b_font>
+					<m_font translate="label comment">
+						<label>Menu Font: </label>
+						<comment>This font will be used for font</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_GoogleFont</source_model>  
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</m_font>
+					<theme_styles translate="label comment">
+						<label>Theme Styles: </label>
+						<comment>This color will be used for style</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_ThemeStyles</source_model> 
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_ThemeStyles</frontend_model>
+						<sort_order>3</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</theme_styles>
+					<bg_color translate="label comment">
+						<label>Background Color: </label>
+						<comment>This color will be used for background</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</bg_color>
+					<text_color translate="label comment">
+	                    <label>Font Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>5</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </text_color>
+					<link_color translate="label comment">
+	                    <label>Link Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>6</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </link_color>
+					<pattern_body translate="label comment">
+	                    <label>Background Body: </label>
+	                    <comment>This Pattern will be used for background body</comment>
+	                    <frontend_type>select</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_pattern</frontend_model>
+						<source_model>mtgeroadmin/config_patternmode</source_model>
+	                    <sort_order>7</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </pattern_body>
+					<menu_bg_color translate="label comment">
+						<label>Background Mainmenu Color: </label>
+						<comment>This color will be used for background menu</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>8</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</menu_bg_color>
+					<menu_text_color translate="label comment">
+	                    <label>Mainmenu Text Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>9</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </menu_text_color>
+					<menu_link_color translate="label comment">
+	                    <label>Mainmenu Link Color: </label>
+	                    <comment>This color will be used for Link</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>10</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </menu_link_color>
+					<pattern_menu translate="label comment">
+	                    <label>Background Mainmenu: </label>
+	                    <comment>This Pattern will be used for background body</comment>
+	                    <frontend_type>select</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_pattern</frontend_model>
+						<source_model>mtgeroadmin/config_patternmode</source_model>
+	                    <sort_order>11</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </pattern_menu>
+	                <main_home_bg translate="label comment">
+	                    <label>Main Home Background: </label>
+	                    <comment>This Pattern will be used for background main home</comment>
+	                    <frontend_type>select</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_pattern</frontend_model>
+						<source_model>mtgeroadmin/config_patternmode</source_model>
+	                    <sort_order>12</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </main_home_bg>
+	                <main_text_color translate="label comment">
+						<label>Main Home Text Color: </label>
+						<comment>This color will be used for text main home</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>13</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</main_text_color>
+					<footer_pattern translate="label comment">
+	                    <label>Footer Static Background: </label>
+	                    <comment>This Pattern will be used for background footer static</comment>
+	                    <frontend_type>select</frontend_type>
+	                    <frontend_model>mtgeroadmin/adminhtml_system_config_form_field_pattern</frontend_model>
+						<source_model>mtgeroadmin/config_patternmode</source_model>
+	                    <sort_order>14</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </footer_pattern>
+	                <footer_static_text_color translate="label comment">
+						<label>Footer Static Text Color: </label>
+						<comment>This color will be used for text footer static</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</footer_static_text_color>
+					<footer_static_link_color translate="label comment">
+						<label>Footer Static Link Color: </label>
+						<comment>This color will be used for link footer static</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtgeroadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>16</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</footer_static_link_color>
+	                <color_panel translate="label">
+                        <label>Enable Change Color Site</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>17</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </color_panel> 
+                    <back_top translate="label">
+                        <label>Enable Go To Top Button</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>18</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </back_top> 
+			    </fields> 
+			</mtgeroadmin_appearance>	
+			<navigation translate="label">
+				<label>Navigation</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<menu_effect translate="label">
+                        <label>Menu Animation</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtgeroadmin/config_NavEffect</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </menu_effect>
+                    <home translate="label">
+                        <label>Home Link in Navigation</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </home>
+					<show_type translate="label comment">
+						<label><![CDATA[Show type <em>(Show Category description or show static blocks with Identifier for url key category in dropdown)</em>: ]]></label>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_ShowType</source_model>
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</show_type> 
+					<show_learn_more translate="label comment">
+						<label><![CDATA[Show <b>"Learn more"</b> for description:]]></label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</show_learn_more>
+				</fields>
+			</navigation>
+			<custom_menu>
+				<label>Custom Menu</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<enable_custom translate="label">
+	                    <label>Enable Custom Menu</label>
+	                    <frontend_type>select</frontend_type>
+	                    <source_model>adminhtml/system_config_source_yesno</source_model>
+	                    <sort_order>1</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </enable_custom>
+	                <static_identifier translate="label comment">
+						<label>Static block identifiers: </label>
+						<comment>Which static block you want they show on menu (Once per line)</comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</static_identifier>
+				</fields>
+			</custom_menu>
+			<thumbnailscroller translate="label">
+				<label>Thumbnail Scroller</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>4</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields> 
+					<direction translate="label">
+						<label>Direction thumbnail scroller: </label>
+						<frontend_type>select</frontend_type>
+						<source_model>mtgeroadmin/config_ThumbDirection</source_model>
+						<sort_order>3</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+                 		</direction>
+					<enabled_scroller translate="label">
+						<label>Enable thumbnail scroller:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</enabled_scroller>
+					<control translate="label">
+						<label>Show control:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</control>
+					<items translate="label">
+						<label>Number of thumbnail show: </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>6</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+				   </items>
+					<width translate="label">
+						<label>Width of thumbnail:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>7</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</width>
+					<height translate="label">
+						<label>Height of thumbnail:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>8</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height>
+					<auto_scroll translate="label">
+						<label>Time of auto scroll:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>9</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</auto_scroll>
+                 		<speed translate="label">
+						<label>Speed of scroll: </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</speed>      
+                 		<enabled_zoom translate="label">
+						<label>Enable Cloud Zoom:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>13</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</enabled_zoom>
+					<width_z translate="label">
+						<label>Width of zoom panel:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</width_z>
+					<height_z translate="label">
+						<label>Height of zoom panel:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>16</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height_z>
+					<width_lbox translate="label">
+						<label>Width of lightbox:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>17></sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</width_lbox>
+					<height_lbox>
+						<label>Height of lightbox:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>18</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height_lbox>
+				</fields>
+			</thumbnailscroller>	
+			<smartmenu translate="label">
+				<label>SmartMenu Config</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>  	
+					<title translate="label">
+                        <label>Title: </label>
+                        <frontend_type>text</frontend_type>   
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </title> 
+					<menustyle translate="label">
+                        <label>Menu Style</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtgeroadmin/config_menuanimate</source_model>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </menustyle>
+					<event translate="label">
+                        <label>Event</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtgeroadmin/config_menuevent</source_model>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                     </event>
+				</fields>
+			</smartmenu>
+			<info translate="label">
+				<label>Theme Information</label>
+				<frontend_type>text</frontend_type>
+				<frontend_model>mtgeroadmin/adminhtml_system_config_information</frontend_model>
+				<sort_order>150</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>                    
+			</info>	
+	    </groups>
+	</mtgeroadmin>
+    </sections>
+</config>

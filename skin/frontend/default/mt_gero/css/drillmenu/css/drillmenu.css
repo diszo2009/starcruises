@@ -1,0 +1,123 @@
+.nav-accordion {
+	width: 100%; 
+}
+
+ul.nav-accordion {
+	padding: 0;
+	margin: 0; 
+	line-height: 0.5em;
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+ul.nav-accordion li {position: relative;}
+.navbar-inner{
+	background: url(../images/bg-nav.png) repeat 0 0 !important;
+}
+.navbar{
+	margin: 0 !important;
+}
+.nav-collapse, .nav-collapse.collapse {
+	display: block !important;
+}
+ul.nav-accordion li a { 
+	background: url(../images/bg-nav.png) repeat 0 0;
+    color: #fff;
+    display: block;
+    font-size: 110%;
+    font-weight: bold;
+    height: 41px;
+    line-height: 41px;
+    padding: 0 0 0 15px;
+    text-decoration: none;
+	border-bottom: #434342 solid 1px;
+	text-shadow:0 0 0 #000;
+	text-align: left;
+}
+
+ul.nav-accordion li a:hover {
+	background-color:#675C7C;
+	color:white;
+}
+
+ul.nav-accordion ul {
+	margin: 0;
+	padding: 0;
+	display: none;
+}
+
+ul.nav-accordion ul li {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+
+ul.nav-accordion ul li a {
+	padding-left: 30px;
+	font-size: 13px; 
+	outline:0;
+}
+
+ul.nav-accordion ul li a:hover {
+	background-color:#D3C99C;
+	color:000;
+}
+
+ul.nav-accordion ul li.active {
+	font-weight: bold;
+}
+
+ul.nav-accordion ul ul li a {
+	color:#fff;
+	padding-left: 50px;
+}
+ul.nav-accordion ul ul ul li a {
+	color:#fff;
+	padding-left: 70px;
+}
+
+ul.nav-accordion ul ul li a:hover {
+	background-color:#D3CEB8;
+	color:#fff;
+}
+
+ul.nav-accordion span{
+	cursor: pointer;
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: 1px;
+    text-indent: -9999px;
+    top: 6px;
+    width: 38px;
+    z-index: 9; 
+	background:url("../images/up.png") no-repeat scroll 12px 3px transparent;
+}
+ul.nav-accordion li span.expand {
+	background:url("../images/up.png") no-repeat scroll 12px 3px transparent;
+	cursor: pointer;
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: 1px;
+    text-indent: -9999px;
+    top: 6px;
+    width: 38px;
+    z-index: 9;
+}
+ul.nav-accordion li span.collapse {
+	background: url("../images/down.png") no-repeat scroll 12px 3px transparent;
+    cursor: pointer;
+    display: block;
+    height: 32px;
+    position: absolute;
+    right: 1px;
+    text-indent: -9999px;
+    top: 6px;
+    width: 38px;
+    z-index: 9;
+}
+ul.detail-parent {
+	padding: 0 0 0 17px;
+	margin: 0px;
+}

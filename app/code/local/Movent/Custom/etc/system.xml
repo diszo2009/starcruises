@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @copyright  Copyright (c) 2013 Movent Corp. -->
+<config>
+    <tabs>
+        <custom translate="label">
+            <label>Movent</label>
+            <sort_order>3000000</sort_order>
+        </custom>
+    </tabs>
+    <sections>
+        <custom translate="label" module="custom">
+            <class>separator-top</class>
+            <label>Custom Settings</label>
+            <tab>custom</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>                
+                <cruise_pickup translate="label">
+                    <label>Cruise/Pickup Location</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <days_count translate="label">
+                            <label>Date Offset</label>
+                            <frontend_type>text</frontend_type>                            
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </days_count>
+                    </fields>
+                </cruise_pickup>
+                
+                <loginform translate="label">
+                    <label>Login Form</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <formtype translate="label">
+                            <label>Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>custom/configurabledisplay</source_model>                      
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                        </formtype>
+                    </fields>
+                </loginform>   
+				
+				<stargenting translate="label">
+                    <label>Star Genting Login Settings </label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields> 
+                        <wsdl_enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                     
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+							<default>0</default>
+                        </wsdl_enabled>
+						<wsdl_testmode translate="label comment">
+                            <label>Enable Test Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                  
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment></comment>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                            </depends>
+                        </wsdl_testmode> 
+                        <wsdl_prod_url translate="label comment">
+                            <label>WSDL URL </label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>WSDL URL for Production </comment>
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>0</wsdl_testmode>
+                            </depends>
+                        </wsdl_prod_url>
+						<wsdl_prod_username translate="label comment">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>0</wsdl_testmode>
+                            </depends>
+                        </wsdl_prod_username>
+						<wsdl_prod_password translate="label comment">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>                  
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate>required-entry password</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>0</wsdl_testmode>
+                            </depends>
+                        </wsdl_prod_password> 
+						<wsdl_prod_profitcenter translate="label comment">
+                            <label>Profit Center</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate>required-entry password</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>0</wsdl_testmode>
+                            </depends>
+                        </wsdl_prod_profitcenter> 
+						<wsdl_prod_remarks translate="label comment">
+                            <label>Remarks</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>17</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate></validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>0</wsdl_testmode>
+                            </depends>
+                        </wsdl_prod_remarks> 
+						
+						<wsdl_test_url translate="label comment">
+                            <label>WSDL URL </label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>WSDL URL for Developer/Testing </comment>
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>1</wsdl_testmode>
+                            </depends>
+                        </wsdl_test_url>					
+						<wsdl_test_username translate="label comment">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>1</wsdl_testmode>
+                            </depends>
+                        </wsdl_test_username>
+						<wsdl_test_password translate="label comment">
+                            <label>Password</label>
+                            <frontend_type>password</frontend_type>                  
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>1</wsdl_testmode>
+                            </depends>
+                        </wsdl_test_password>
+						<wsdl_test_profitcenter translate="label comment">
+                            <label>Profit Center</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate></validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>1</wsdl_testmode>
+                            </depends>
+                        </wsdl_test_profitcenter>
+						
+						<wsdl_test_remarks translate="label comment">
+                            <label>Remarks</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<validate></validate>
+                            <depends>
+                                <wsdl_enabled>1</wsdl_enabled>
+                                <wsdl_testmode>1</wsdl_testmode>
+                            </depends>
+                        </wsdl_test_remarks>
+						
+						<wsdl_disabled_message translate="label comment">
+                            <label>Notification Message</label>
+                            <frontend_type>text</frontend_type>                  
+                            <sort_order>28</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>  
+							<validate>required-entry</validate>
+                            <depends>
+                                <wsdl_enabled>0</wsdl_enabled> 
+                            </depends>
+                        </wsdl_disabled_message>
+                    </fields>
+                </stargenting>				
+            </groups>
+        </custom>
+    </sections>
+</config>

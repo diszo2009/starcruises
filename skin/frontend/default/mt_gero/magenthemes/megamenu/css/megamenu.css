@@ -1,0 +1,149 @@
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+.megamenu-container {
+    height: 50px;
+}
+#megamenu { 
+    height:50px;
+    margin:0 auto;
+    padding:0;
+    background:url(../images/bg-nav.png) 0 0 repeat;
+    position: relative;
+    z-index: 99;
+}
+#megamenu ul {
+    padding: 0;
+    margin: 0;
+}
+#megamenu ul li {
+    position:relative;
+    float:left;
+    background:url(../images/bg-nav-li.png) 100% 0 no-repeat;
+    height:50px;
+    padding:0;
+}
+#megamenu ul li.root {
+    z-index:11;
+}
+#megamenu ul li.last {
+    background:none;
+}
+#megamenu ul li.root a {
+}
+#megamenu ul li a {
+    text-decoration:none;
+    font-weight:normal;
+    display:block;
+    cursor:pointer;
+    padding:14px 20px;
+    font-size:14px;
+    text-transform:uppercase;
+    text-shadow: none;
+    font-family:TypoLatinserif-BoldRegular;
+}
+#megamenu ul li a span {
+}
+#megamenu ul li.over > a {
+    text-shadow:0 1px 0 #000;
+}
+#megamenu ul li.current > a {
+    text-shadow:0 1px 0 #000;
+}
+#megamenu li.background {
+    background:#cd1507;
+    z-index: 8;
+    position: absolute; 
+}
+#megamenu li.background .left {
+    height: 50px;
+    float:none !important;
+}
+#megamenu li.root > div.childcontent {
+    position:absolute;
+    top:50px;
+    left:-10000px;
+    z-index:7;
+    text-align: left;
+    padding:20px 20px 15px;
+    background:#fff;
+    border:1px solid #acacac;
+    border-top:5px solid #cd1507;
+}
+#megamenu .megamenu-title > img {
+    float:left;
+}
+#megamenu .root > .megamenu-title > img {
+    padding:16px 2px 0 0 !important;
+}
+#megamenu .megamenu-title > img.icon-megamenu {
+    padding:10px 2px 0 10px;
+}
+#megamenu .megamenu-title > img.no-icon-megamenu {
+    padding:7px 0 0 0;
+}
+#megamenu div.categorycontent {
+    border: 1px solid #cccccc;
+    background:#FFFFFF;
+}
+#megamenu .childcontent ul li a {
+    color:#000000;
+    line-height: 20px;
+    font-family:arial;
+}
+#megamenu li.over div.childcontent {
+    left:0;
+}
+#megamenu div.childcontent ul {
+    top:0;
+    float:left;
+    width: 100%;
+    margin:0 0 5px;
+}
+#megamenu div.childcontent ul li {
+    float:left;
+    background:none;
+    width:100%;
+    height:auto;
+}
+#megamenu div.childcontent ul li a {
+    font-size:12px;
+    text-transform:none;
+    padding:0;
+    display:block;
+    margin: 0 3px;
+    background:url(../images/bg-li.png) 0 8px no-repeat;
+    padding:0 0 0 14px;
+}
+#megamenu div.childcontent ul li a:hover {
+    color: #cd1507;
+}
+#megamenu div.childcontent ul li.group > a {
+    text-transform:uppercase;
+    color:#3a3a3a;
+    background:none;
+    padding:0;
+    margin:0 0 10px;
+    font-size:16px;
+    font-weight:bold;
+}
+#megamenu div.childcontent ul ul li.group > a {
+    border: 0;
+}
+#megamenu div.childcontent ul li a span {
+}
+#megamenu .sub-megamenu {
+    position:absolute;
+    top:0;
+    left:-10000px;
+    z-index:999;
+    padding:10px;
+    background:#fff;
+    border:1px solid #acacac;
+}
+#megamenu .sub-megamenu > ul {
+}

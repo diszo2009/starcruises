@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_CatalogInventory>
+        	<version>1.7.0.0</version>
+        </Movent_CatalogInventory>
+    </modules>    
+	<global>
+        <models>
+            <cataloginventory>
+        		<rewrite>
+        			<stock_item>Movent_CatalogInventory_Model_Stock_Item</stock_item> 
+        		</rewrite>
+            </cataloginventory>        
+        </models>
+    </global>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_DatabaseUpdate>
+            <version>0.1.0</version> 
+            <version>0.2.0</version> 
+        </Movent_DatabaseUpdate>
+    </modules>
+    <global>
+        <resources>
+            <databaseupdate_setup>
+                <setup>
+                    <module>Movent_DatabaseUpdate</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </databaseupdate_setup>
+        </resources> 
+    </global>
+</config>

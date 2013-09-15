@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_DatabaseUpdate>
+            <active>true</active>
+            <codePool>local</codePool> 
+        </Movent_DatabaseUpdate>
+    </modules>
+</config>
+

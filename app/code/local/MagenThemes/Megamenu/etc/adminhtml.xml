@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<config>
+	<menu>
+        <magenthemes translate="title" module="megamenu">
+            <title>MagenThemes</title>
+	    	<sort_order>71</sort_order>               
+	    	<children>
+                <megamenu translate="title" module="megamenu">
+                    <title>MT Megamenu</title>
+                    <sort_order>99</sort_order>               
+                    <children>
+                    	<!--<group module="megamenu">
+                    		<title>Manage Menu</title>
+                    		<sort_order>0</sort_order>
+                    		<action>megamenu/adminhtml_group</action>
+                		</group>-->
+                    	<items module="megamenu">
+                    		<title>Manage Menu Item</title>
+                    		<sort_order>1</sort_order>
+                    		<action>megamenu/adminhtml_megamenu</action>
+                		</items>
+                        <configuration translate="title" module="megamenu">
+			    			<title>Configuration</title>
+			    			<sort_order>2</sort_order>
+			    			<action>adminhtml/system_config/edit/section/megamenu</action>
+						</configuration>
+                    </children>
+                </megamenu>
+            </children>
+        </magenthemes>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <megamenu translate="title">
+                                        <title>Megamenu Module</title>
+                                        <sort_order>10</sort_order>
+                                    </megamenu>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <magenthemes translate="title" module="megamenu">
+            			<title>MagenThemes</title>
+	    				<sort_order>71</sort_order>               
+	    				<children>
+                			<megamenu translate="title" module="megamenu">
+                    			<title>MT Megamenu</title>
+                    			<sort_order>99</sort_order>               
+                    			<children>
+                    				<!--<group module="megamenu">
+                    					<title>Manage Menu</title>
+                    					<sort_order>0</sort_order>
+                    					<action>megamenu/adminhtml_group</action>
+                					</group>-->
+                    				<items module="megamenu">
+                    					<title>Manage Menu Item</title>
+                    					<sort_order>1</sort_order>
+                    					<action>megamenu/adminhtml_megamenu</action>
+                					</items>
+                        			<configuration translate="title" module="megamenu">
+			    						<title>Configuration</title>
+			    						<sort_order>2</sort_order>
+			    						<action>adminhtml/system_config/edit/section/megamenu</action>
+									</configuration>
+                    			</children>
+                			</megamenu>
+            			</children>
+        			</magenthemes>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<modules>
+  <MagenThemes_Customer>
+    <version>0.0.1</version>
+  </MagenThemes_Customer>
+</modules>
+<global>
+        <fieldsets>
+            <customer_account>
+                <nationality><create>1</create><update>1</update></nationality>
+                <mobilenumber><create>1</create><update>1</update></mobilenumber>
+                </customer_account>
+                </fieldsets>
+                </global>
+<frontend>
+  <routers>
+    <customer>
+      <args>
+        <modules>
+          <!-- Use the module Spinonesolutions_Customer BEFORE Mage_Customer -->
+          <MagenThemes_Customer before="Mage_Customer">MagenThemes_Customer</MagenThemes_Customer>
+        </modules>
+      </args>
+    </customer>
+  </routers>
+</frontend>
+</config>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Movent_Heared4us>
+         <version>0.1.0</version>
+      </Movent_Heared4us>
+   </modules>  
+   <global>
+	    <blocks>
+			<heared4us>
+				<rewrite>
+					<onepage>Movent_Heared4us_Block_Onepage</onepage>
+				</rewrite>			
+			</heared4us>
+	    </blocks>
+   </global>
+    <frontend>
+        <routers>
+            <inchoo_heared4us>
+                <args>
+                    <modules>
+                        <movent_heared4us before="Inchoo_Heared4us">Movent_Heared4us</movent_heared4us>
+                    </modules>
+                </args>
+            </inchoo_heared4us>
+        </routers>
+    </frontend>
+</config>  

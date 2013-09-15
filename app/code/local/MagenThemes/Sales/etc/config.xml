@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+	    <models>
+			<sales>
+				<rewrite>
+					<quote>MagenThemes_Sales_Model_Quote</quote>
+				</rewrite>
+				<rewrite>
+					<quote_address_total_subtotal>MagenThemes_Sales_Model_Quote_Address_Total_Subtotal</quote_address_total_subtotal>
+				</rewrite>
+			</sales>
+		</models>
+		<blocks>
+			<sales>
+				<rewrite>
+					<order_totals>MagenThemes_Sales_Block_Order_Totals</order_totals>
+				</rewrite>
+			</sales>
+		</blocks>
+	</global>          
+</config>

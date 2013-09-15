@@ -1,0 +1,87 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been processed.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('Please take note of the following pickup details. You will receive an order confirmation email with details of your order.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php   
+	// By Movent (2013-05-24)
+	$cstmOptions = Mage::getSingleton('custom/pickupoptions');		
+	Mage::getSingleton('core/session', array('name'=>'frontend'));	
+	$store= $cstmOptions->getPickupData("ORDERED_ITEMS");	
+	$pickupCounter = 1;
+	
+?>
+
+<ul class="form-list">
+	<?php if(count($store)>0) : ?>
+	
+		<?php foreach($store as $pickupLocation => $value) : ?>	
+			
+			<?php $pickupLocationInfo = $cstmOptions->getStoreLocationByValue($pickupLocation);  ?>
+			
+			<li class="fields" style="width:100%">
+				<div class="field"  style="width: 781px;">
+					<label for="pickup" style="margin-top: 5px">Items: </label>
+					<div class="input-box">
+						
+						<?php foreach($value as $item) : ?>						
+							<p style="margin: 0px"><?php echo $item[1] . " " . $item[0];?></p>						
+						<?php endforeach; ?>
+							
+					</div>
+					
+					<?php if( $cstmOptions->getStoreAttributeLocationType($pickupLocation) == Movent_Custom_Model_Pickupoptions::LOCATION_TYPE_CRUISE) : ?>
+						<label for="pickup" style="margin-top: 5px"><?php echo $this->__('To be picked up onboard') ?>: </label>
+					<?php else: ?>
+						<label for="pickup" style="margin-top: 5px"><?php echo $this->__('To be picked up at') ?>: </label>
+					<?php endif; ?>
+					
+		    		<div class="input-box">
+						<p style="margin: 0px"><?php echo $pickupLocationInfo['label']?></p>
+					</div>
+					
+					<?php if($pickupCounter < count($store)) : ?>
+						<hr>
+					<?php endif; ?>
+					
+				</div>
+			</li>	
+
+		<?php $pickupCounter++; endforeach; ?>
+		
+	<?php endif; ?>
+</ul>	
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>

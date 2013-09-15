@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <customer_account_login>
+        <reference name="before_body_end">
+            <block type="core/template" name="aitpermissions_login_footer" template='aitpermissions/lfooter.phtml' after="-"/>
+        </reference>
+    </customer_account_login>
+</layout>
+<!--
+/**
+ * Product:     Advanced Permissions
+ * Package:     Aitoc_Aitpermissions_2.4.0_2.0.3_467520
+ * Purchase ID: JlNeBKBvSqsIsT7whc80ZpBA38zH86mwW38f4D7p5H
+ * Generated:   2013-01-14 03:56:09
+ * File path:   app/design/frontend/default/default/layout/aitpermissions.xml
+ * Copyright:   (c) 2013 AITOC, Inc.
+ */
+-->

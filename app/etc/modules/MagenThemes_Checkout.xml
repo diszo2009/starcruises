@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <MagenThemes_Checkout>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MagenThemes_Checkout>
+    </modules>
+</config>

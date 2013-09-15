@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<modules>
+  <MagenThemes_Checkout>
+    <version>0.0.1</version>
+  </MagenThemes_Checkout>
+</modules>
+<frontend>
+  <routers>
+    <!-- This is the frontname to override
+    EG: http://mydomainname.com/customer/  -->
+    <checkout>
+      <args>
+        <modules>
+          <!-- Use the module Spinonesolutions_Customer BEFORE Mage_Customer -->
+          <MagenThemes_Checkout before="Mage_Checkout">MagenThemes_Checkout</MagenThemes_Checkout>
+        </modules>
+      </args>
+    </checkout>
+  </routers>
+</frontend>
+</config>

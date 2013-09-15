@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_Custom>
+            <version>0.1.0</version>
+        </Movent_Custom>
+    </modules>    
+	<global>
+        <models>
+            <custom>
+                <class>Movent_Custom_Model</class>
+            </custom>           
+        </models>
+		<resources> 
+			<custom_setup> 
+				<setup> 
+					<module>Movent_Custom</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</custom_setup>
+            <custom_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </custom_write>
+            <custom_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </custom_read>
+		</resources>
+		<helpers>
+            <custom>
+                <class>Movent_Custom_Helper</class>
+            </custom>
+        </helpers>
+    </global>
+	
+	<adminhtml>        
+		<acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <custom translate="title" module="custom">
+                                    <title>Manage Movent Modules</title>
+                                    <sort_order>3000000</sort_order>
+                                </custom>
+                                <config>
+                                    <children>
+                                        <custom translate="title" module="custom">
+                                            <title>Movent Module Manager</title>
+                                        </custom>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+	<default>
+		<custom>
+			<stargenting>
+				<wsdl_enabled>0</wsdl_enabled>
+				<wsdl_testmode>0</wsdl_testmode>
+				<wsdl_prod_url>http://10.236.9.156/DRS_XML/Service.asmx?wsdl</wsdl_prod_url>
+				<wsdl_prod_username>solution</wsdl_prod_username>
+				<wsdl_prod_password>solution</wsdl_prod_password>
+				<wsdl_prod_profitcenter>B2CA</wsdl_prod_profitcenter>
+				<wsdl_prod_remarks>Deduct Points</wsdl_prod_remarks>
+				<wsdl_test_url>http://122.55.90.121/DRSAPIv2/Service.asmx?wsdl</wsdl_test_url>
+				<wsdl_test_username>yks</wsdl_test_username>
+				<wsdl_test_password>pass</wsdl_test_password>
+				<wsdl_test_profitcenter>7SHW</wsdl_test_profitcenter>
+				<wsdl_test_remarks>Deduct Points</wsdl_test_remarks>
+				<wsdl_disabled_message>Stargenting Connection is currently disabled by admin.</wsdl_disabled_message>
+			</stargenting> 
+		</custom>
+	</default> 
+</config>

@@ -1,0 +1,174 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<script type="text/javascript">
+function check1() { 
+	if(document.getElementById('ID').checked) { 
+	  document.getElementById('emaillabel1').style.display = "none"; 
+	  document.getElementById('emaillabel2').style.display = "block";
+	  document.getElementById('passlabel1').style.display = "none"; 
+	  document.getElementById('passlabel2').style.display = "block"; 
+	}else if(document.getElementById('Email').checked) { 
+	  document.getElementById('emaillabel2').style.display = "none"; 
+	  document.getElementById('emaillabel1').style.display = "block";
+	  document.getElementById('passlabel2').style.display = "none"; 
+	  document.getElementById('passlabel1').style.display = "block"; 	  
+	} 
+ }
+
+</script>
+<?php
+/**
+ * Customer login form template
+ *
+ * @see app/design/frontend/base/default/template/customer/form/login.phtml
+ */
+/** @var $this Mage_Customer_Block_Form_Login */
+?>
+
+
+<?php
+// Added by: Movent 2013
+$formtype = Mage::getStoreConfig('custom/loginform/formtype');
+?>
+<div class="account-login row-fluid show-grid">
+    <div class="page-title">
+        <h1><?php echo $this->__('Login or Sign up') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+        <div class="col2-set span6">
+            <div class="new-users">
+                <div class="content">
+                    <h2><?php echo $this->__('BECOME A MEMBER') ?></h2>
+                    <p><?php echo $this->__('Sign up now for fast and easy checkout process.') ?></p>
+                </div>
+            </div>
+            <div class="new-users">
+                <div class="buttons-set">
+                    <button type="button" title="<?php echo $this->__('Sign Up') ?>" class="button" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Sign Up') ?></span></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="col2-set span6">
+            <div class="registered-users">
+            	
+            	
+            	
+                <div class="content">
+                    <h2><?php echo $this->__('MEMBER LOGIN') ?></h2>
+                    <p><?php echo $this->__('Login now using your') ?></p>
+                    
+                    	<?php if($formtype == 2) : ?> <!-- Show Both Form --> 
+                    
+		                    <input type="radio" name="login[validateRadio]" id="Email" value="Email" onclick="check1();" checked=true />&nbsp;&nbsp;&nbsp;<?php echo $this->__('Email Address')?><br/>
+							<input type="radio" name="login[validateRadio]" id="ID" value="ID"  onclick="check1();"  />&nbsp;&nbsp;&nbsp;<?php echo $this->__('Star Genting Membership ID and pay using your points')?> <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->__('No Star Genting PIN yet?')?> <a href="http://www.stargentingrewards.com/EN/home/firsttimelogin.aspx" target="_blank"><?php echo $this->__('Activate your PIN now.')?></a></br></br>
+		                    <ul class="form-list">
+		                        <li>
+		                            <label for="email" id="emaillabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Email Address' ?></label>
+		                            <label for="email" id="emaillabel2" class="required" style="border:0px;display:none;"><em>*</em><?php echo 'Star Genting Membership ID' ?></label>
+		                            <div class="input-box">
+		                                <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry" title="<?php echo $this->__('Email Address') ?>" />
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <label for="pass" id="passlabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Password' ?></label>
+		                            <label for="pass" id="passlabel2" class="required" style="border:0px;display:none;"><em>*</em><?php echo 'PIN' ?></label>
+		                            <div class="input-box">
+		                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+		                            </div>
+		                        </li>
+		                        <?php echo $this->getChildHtml('form.additional.info'); ?>	                        
+		                    </ul>
+	                    
+	                   	<?php elseif($formtype == 1): ?> <!-- Show Stargenting Form Only -->
+	                		
+							<input type="hidden" name="login[validateRadio]" id="ID" value="ID"/>
+							
+							<div><?php echo $this->__('Star Genting Membership ID and pay using your points')?></div>
+							<div style="padding-bottom: 10px;"><?php echo $this->__('No Star Genting PIN yet?')?> <a href="http://www.stargentingrewards.com/EN/home/firsttimelogin.aspx" target="_blank"><?php echo $this->__('Activate your PIN now.')?></a></div>
+		                    <ul class="form-list">
+		                        <li>
+		                            <label for="email" id="emaillabel2" class="required" style="border:0px;"><em>*</em><?php echo 'Star Genting Membership ID' ?></label>
+		                            <div class="input-box">
+		                                <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry" title="<?php echo $this->__('Email Address') ?>" />
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <label for="pass" id="passlabel2" class="required" style="border:0px;"><em>*</em><?php echo 'PIN' ?></label>
+		                            <div class="input-box">
+		                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+		                            </div>
+		                        </li>
+		                        <?php echo $this->getChildHtml('form.additional.info'); ?>	                        
+		                    </ul>
+	                	
+	                	
+			            <?php else: ?>  <!-- Show Member login Form Only -->
+			            	
+			            	<input type="hidden" name="login[validateRadio]" id="Email" value="Email"/>
+		                    <ul class="form-list">
+		                        <li>
+		                            <label for="email" id="emaillabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Email Address' ?></label>		                            
+		                            <div class="input-box">
+		                                <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry" title="<?php echo $this->__('Email Address') ?>" />
+		                            </div>
+		                        </li>
+		                        <li>
+		                            <label for="pass" id="passlabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Password' ?></label>		                           
+		                            <div class="input-box">
+		                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+		                            </div>
+		                        </li>
+		                        <?php echo $this->getChildHtml('form.additional.info'); ?>	                        
+		                    </ul>
+			            	
+			            <?php endif; ?>
+	                    
+	                    
+                    <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+                    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                </div>
+                
+                
+            </div>
+            <div class="registered-users">
+                <div class="buttons-set">
+                    <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                    <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+                </div>
+            </div>
+        </div>
+        <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
+            <input name="context" type="hidden" value="checkout" />
+        <?php endif; ?>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>

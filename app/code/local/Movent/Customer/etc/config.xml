@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Movent_Customer>
+        	<version>1.7.0.0</version>
+        </Movent_Customer>
+    </modules>    
+	<global>
+        <blocks>
+            <customer>
+        		<rewrite>
+        			<account_dashboard_info>Movent_Customer_Block_Account_Dashboard_Info</account_dashboard_info> 
+        			<address_edit>Movent_Customer_Block_Address_Edit</address_edit> 
+        		</rewrite>
+            </customer>        
+        </blocks>
+        
+        <models>
+            <customer>
+        		<rewrite>
+        			<customer>Movent_Customer_Model_Customer</customer>  
+        			<address>Movent_Customer_Model_Address</address>
+        			<session>Movent_Customer_Model_Session</session>
+        		</rewrite>
+            </customer>    
+            
+            <customer_resource>
+		        <rewrite>
+		            <customer>Movent_Customer_Model_Resource_Customer</customer>
+		        </rewrite>
+		    </customer_resource>
+        
+        </models>
+    </global>
+    
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <movent_customer before="MagenThemes_Customer">Movent_Customer</movent_customer>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+    
+</config>

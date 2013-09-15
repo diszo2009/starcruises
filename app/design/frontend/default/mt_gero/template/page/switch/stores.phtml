@@ -1,0 +1,86 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php 
+/**
+ * Store switcher template
+ *
+ * @see Mage_Core_Block_Store_Switcher
+ */
+?>
+<?php if(count($this->getGroups())>1): ?>
+<div class="store-switcher">
+    <label for="select-store"><?php echo $this->__('Select Store:') ?></label>
+    <select id="select-store" title="<?php echo $this->__('Select Store') ?>" onchange="location.href=this.value">
+    <?php /*foreach ($this->getStores() as $_store): ?>
+        <option value="<?php echo $_store->getUrl('') ?>"<?php if($_store->getId()==$this->getCurrentStoreId()): ?> selected="selected"<?php endif; ?>><?php echo $_store->getName() ?></option>
+    <?php endforeach;*/ ?>
+    <?php foreach ($this->getGroups() as $_group): ?>
+        <?php $_selected = ($_group->getId()==$this->getCurrentGroupId()) ? ' selected="selected"' : '' ?>
+        <option value="<?php echo $_group->getHomeUrl() ?>"<?php echo $_selected ?>><?php echo $this->htmlEscape($_group->getName()) ?></option>
+    <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>
+
+<div class="website-switcher">
+	<!-- BEGIN website switcher -->
+	<label for="website-changer"><?php echo $this->__('Choose Store:') ?></label>
+	<?php /* <select id="website-changer" onChange="document.location=this.options[selectedIndex].value"> */?>
+	<select id="website-changer" onChange="showWarning();">
+	<?php
+	$websites = Mage::getModel('core/website')->getCollection();
+	foreach($websites as $website)
+	{
+		$default_store = $website->getDefaultStore();
+		$url_obj = new Mage_Core_Model_Url();
+		$default_store_path = $url_obj->getBaseUrl(array('_store'=> $default_store->getCode()));
+	?>
+		<option <?php if(strstr($this->helper('core/url')->getCurrentUrl(), $default_store_path)):?>selected="selected"<?php endif; ?> value="<?php echo $default_store_path ?>"><?php echo $website->getName()?></option>
+	<?php
+	}
+	?>
+	</select>
+</div> <!-- END website switcher -->
+
+<script>
+<!--
+var s = document.getElementById("website-changer");
+var storenow = s.options[s.selectedIndex].text;
+
+function showWarning()
+{
+	if(confirm('You are currently viewing "'+storenow+'" store. Changing stores will clear your shopping cart. Do you want to continue?')){
+		var e = document.getElementById("website-changer");
+		var url = e.options[e.selectedIndex].value;
+		location.href=url;
+	}
+	else{
+		location.href='';
+	}
+}
+//-->
+</script>

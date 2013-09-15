@@ -1,0 +1,199 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<script type="text/javascript">
+function check1() { 
+	if(document.getElementById('ID').checked) { 
+	  document.getElementById('emaillabel1').style.display = "none"; 
+	  document.getElementById('emaillabel2').style.display = "block";
+	  document.getElementById('passlabel1').style.display = "none"; 
+	  document.getElementById('passlabel2').style.display = "block"; 
+	}else if(document.getElementById('Email').checked) { 
+	  document.getElementById('emaillabel2').style.display = "none"; 
+	  document.getElementById('emaillabel1').style.display = "block";
+	  document.getElementById('passlabel2').style.display = "none"; 
+	  document.getElementById('passlabel1').style.display = "block"; 	  
+	} 
+ }
+
+</script>
+<?php
+/**
+ * Customer onepage checkout login form template
+ *
+ * @see app/design/frontend/base/default/template/checkout/onepage/login.phtml
+ */
+/** @var $this Mage_Checkout_Block_Onepage_Login */
+?>
+<div class="col2-set">
+    <?php echo $this->getChildHtml('login_before')?>
+    <div class="col-1">
+        <h3><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Sign Up') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h3>
+       <!-- <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <p><?php echo $this->__('Sign up now for fast and easy checkout process.') ?></p>
+        <?php else: ?>
+            <p><strong><?php echo $this->__('Become a Member') ?></strong><br />
+            <?php echo $this->__('Sign up now for fast and easy checkout process.') ?></p>
+        <?php endif; ?>
+        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+            <ul class="form-list">
+                <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:guest" value="guest"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_GUEST): ?> checked="checked"<?php endif; ?> class="radio" /><label for="login:guest"><?php echo $this->__('Checkout as Guest') ?></label>
+                </li>
+                <?php endif; ?>
+                <li class="control">
+                    <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
+                </li>
+            </ul>-->
+            <input type="hidden" name="checkout_method" id="login:register" value="1"/>
+            <h4><?php echo $this->__('BECOME A MEMBER') ?></h4>
+            <p><?php echo $this->__('Sign up now for fast and easy checkout') ?></p>
+         
+        <?php else: ?>
+            <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
+        <?php endif; ?>
+    </div>
+    <div class="col-2">
+        <h3><?php echo $this->__('Member Login') ?></h3>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
+        <fieldset>
+            <h4><?php echo $this->__('Already registered?') ?></h4>
+            <p><?php echo $this->__('Please log in below:') ?></p>
+            <input type="radio" name="login[validateRadio]" id="Email" value="Email" onclick="check1();" checked=true />&nbsp;&nbsp;&nbsp;Email Address</br>
+					<input type="radio" name="login[validateRadio]" id="ID" value="ID"  onclick="check1();"  /> &nbsp;&nbsp;&nbsp;Star Genting Membership ID and pay using your points <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Star Genting PIN yet? <a href="http://www.stargentingrewards.com/EN/home/firsttimelogin.aspx" target="_blank">Activate your PIN now.</a></br></br>
+            <ul class="form-list">
+                <li>
+                    <label for="login-email" id="emaillabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Email Address' ?></label>
+                    <label for="login-email" id="emaillabel2" class="required" style="border:0px;display:none;"><em>*</em><?php echo 'Star Genting Membership ID' ?></label>
+                    <div class="input-box">
+                        <input type="text" class="input-text required-entry" id="login-email" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" />
+                    </div>
+                </li>
+                <li>
+                    <label for="login-password" id="passlabel1" class="required" style="border:0px;"><em>*</em><?php echo 'Password' ?></label>
+                    <label for="login-password" id="passlabel2" class="required" style="border:0px;display:none;"><em>*</em><?php echo 'PIN' ?></label>
+                    <div class="input-box">
+                        <input type="password" class="input-text required-entry" id="login-password" name="login[password]" />
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+                <!--?php echo $this->getChildHtml('persistent.remember.me'); ?>-->
+            </ul>
+            <input name="context" type="hidden" value="checkout" />
+        </fieldset>
+        </form>
+    </div>
+</div>
+<div class="col2-set">
+    <div class="col-1">
+        <div class="buttons-set">
+            <p class="required">&nbsp;</p>
+            <?php if ($this->getQuote()->isAllowedGuestCheckout()): ?>
+                <button id="onepage-guest-register-button" type="button" class="button" onclick="checkout.setMethod();"><span><span><?php echo $this->__('Sign Up') ?></span></span></button>
+            <?php elseif ($this->helper('checkout')->isCustomerMustBeLogged()): ?>
+                <button id="onepage-guest-register-button" type="button" class="button" onclick="window.location='<?php echo $this->helper('checkout/url')->getRegistrationUrl();?>'"><span><span><?php echo $this->__('Sign Up') ?></span></span></button>
+            <?php else: ?>
+                <form action="<?php echo $this->getUrl('persistent/index/saveMethod'); ?>">
+                    <button id="onepage-guest-register-button" type="submit" class="button"><span><span><?php echo $this->__('Register') ?></span></span></button>
+                </form>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="buttons-set">
+            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+            <a href="<?php echo $this->getUrl('customer/account/forgotpassword') ?>" class="f-left"><?php echo $this->__('Forgot your password?') ?></a>
+            <button type="submit" class="button" onclick="onepageLogin(this)"><span><span><?php echo $this->__('Login') ?></span></span></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var loginForm = new VarienForm('login-form', true);
+    $('login-email').observe('keypress', bindLoginPost);
+    $('login-password').observe('keypress', bindLoginPost);
+    function bindLoginPost(evt){
+        if (evt.keyCode == Event.KEY_RETURN) {
+            loginForm.submit();
+        }
+    }
+    function onepageLogin(button)
+    {
+        if(loginForm.validator && loginForm.validator.validate()){
+            button.disabled = true;
+            loginForm.submit();
+        }
+    }
+//]]>
+</script>
+<?php
+    $registerParam = $this->getRequest()->getParam('register');
+    if ($registerParam || $registerParam === ''):
+?>
+    <script type="text/javascript">
+    //<![CDATA[
+        document.observe("dom:loaded", function() {
+            if($('login:register')) {
+                $('login:register').checked = true;
+                checkout.setMethod();
+            }
+        })
+    //]]>
+    </script>
+<?php endif; ?>
+
+<?
+
+//Attribute to add
+$newAttributeName = "membershipid"; //modify this with the name of your attribute
+ 
+//a) Add EAV Attributes (modify as you needed)
+$attribute  = array(
+    'type'          => 'varchar',
+    'label'         => 'Membership ID',
+    'visible'       => true,
+    'required'      => false,
+    'user_defined'  => false,
+    'searchable'    => false,
+    'filterable'    => false,
+    'comparable'    => false,
+);
+ 
+$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
+//Add to customer
+$setup->addAttribute('customer', $newAttributeName, $attribute);
+/* 
+//b) Add Quote attributes (one page step to step save field)
+$setup = new Mage_Sales_Model_Mysql4_Setup('sales_setup');
+$setup->getConnection()->addColumn(
+        $setup->getTable('sales_flat_quote'),
+        $newAttributeName,
+        'text NULL DEFAULT NULL'
+    );
+$setup->addAttribute('quote', "customer_".$newAttributeName, array('type' => 'varchar', 'visible' => false));
+*/
