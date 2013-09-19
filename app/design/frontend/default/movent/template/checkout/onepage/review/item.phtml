@@ -39,7 +39,7 @@ $pickupLocationInfo = $cstmOptions->getStoreLocationByValue($pickupLocation);
     <!-- price with equivalent points-->
     <?php 
    
-	$_product = Mage::getModel('catalog/product')->setStore(Mage::app()->getStore())->load($_item->getProductId());
+	$_product = Mage::getModel('catalog/product')->setStoreId(Mage::app()->getStore()->getId())->load($_item->getProductId());
 	$exchange_rate = Mage::getModel('custom/service')->getExchangeRateByProductId($_item->getProductId());	
 	$special_points = $_product->getSpecialPoints();
 	

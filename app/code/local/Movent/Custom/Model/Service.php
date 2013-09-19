@@ -177,7 +177,7 @@ class Movent_Custom_Model_Service
 						  ->setProfitCenter($resp_settings->getWsdlTestProfitcenter())
 						  ->setRemarks($resp_settings->getWsdlTestRemarks());
 		}else{  
-			$resp_settings->setUrl($resp_settings->getWsdlTestUrl())
+			$resp_settings->setUrl($resp_settings->getWsdlProdUrl())
 						  ->setUsername($resp_settings->getWsdlProdUsername())
 						  ->setPassword($resp_settings->getWsdlProdPassword())
 						  ->setProfitCenter($resp_settings->getWsdlProdProfitcenter())

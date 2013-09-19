@@ -54,15 +54,27 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
 ?>
 <div class="col2-set">
     <?php echo $this->getChildHtml('login_before')?>
+    
+    <?php if($formtype != 1) : ?>
     <div class="col-1">
-        <h3><?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?><?php echo $this->__('Sign Up') ?><?php else: ?><?php echo $this->__('Register to Create an Account') ?><?php endif; ?></h3>
-       <!-- <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+        <h3>
+        	<?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+    			<?php echo $this->__('Sign Up') ?>
+    		<?php else: ?>
+    			<?php echo $this->__('Register to Create an Account') ?>
+    		<?php endif; ?>
+        </h3>
+        
+       <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
             <p><?php echo $this->__('Sign up now for fast and easy checkout process.') ?></p>
         <?php else: ?>
             <p><strong><?php echo $this->__('Become a Member') ?></strong><br />
             <?php echo $this->__('Sign up now for fast and easy checkout process.') ?></p>
         <?php endif; ?>
-        <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
+        
+        
+        <?php if( $this->getQuote()->isAllowedGuestCheckout()): ?>
+        	
             <ul class="form-list">
                 <?php if( $this->getQuote()->isAllowedGuestCheckout() ): ?>
                 <li class="control">
@@ -72,7 +84,7 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
                 <li class="control">
                     <input type="radio" name="checkout_method" id="login:register" value="register"<?php if($this->getQuote()->getCheckoutMethod()==Mage_Checkout_Model_Type_Onepage::METHOD_REGISTER || !$this->getQuote()->isAllowedGuestCheckout()): ?> checked="checked"<?php endif ?> class="radio" /><label for="login:register"><?php echo $this->__('Register') ?></label>
                 </li>
-            </ul>-->
+            </ul>
             <input type="hidden" name="checkout_method" id="login:register" value="1"/>
             <h4><?php echo $this->__('BECOME A MEMBER') ?></h4>
             <p><?php echo $this->__('Sign up now for fast and easy checkout') ?></p>
@@ -80,8 +92,14 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
         <?php else: ?>
             <input type="hidden" name="checkout_method" id="login:register" value="register" checked="checked" />
         <?php endif; ?>
+        
+        
     </div>
     <div class="col-2">
+    <?php else: ?>
+    <div class="col-1" style="width:100%">
+    <?php endif; ?>
+    
         <h3><?php echo $this->__('Member Login') ?></h3>
         <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
         <form id="login-form" action="<?php echo $this->getPostAction() ?>" method="post">
@@ -167,6 +185,8 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
     </div>
 </div>
 <div class="col2-set">
+	
+	<?php if($formtype != 1) : ?>
     <div class="col-1">
         <div class="buttons-set">
             <p class="required">&nbsp;</p>
@@ -182,6 +202,10 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
         </div>
     </div>
     <div class="col-2">
+    <?php else: ?>
+    	<div class="col-1">
+    <?php endif; ?>
+    
         <div class="buttons-set">
             <p class="required"><?php echo $this->__('* Required Fields') ?></p>
 

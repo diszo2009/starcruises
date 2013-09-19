@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Payment
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+   <sections>
+        <payment translate="label">
+            <label>Payment Methods</label>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>400</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <epayment translate="label" module="paygate">
+                    <label>Infinitium E-Payment (By Movent)</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>200</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends> 
+								<active>1</active>
+							</depends>
+                        </title>
+						<enable_testmode translate="label">
+                            <label>Enable Test Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<active>1</active>
+							</depends>
+                        </enable_testmode>
+                        <integration_type translate="label">
+                            <label>Integration Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>infinitiumepayment/system_config_source_payment_integrationtype</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<depends>
+								<active>1</active>
+							</depends>
+                        </integration_type>
+						<gatewayurl_window_live translate="label comment">
+                            <label>Gateway URL (Window)</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>		
+							<validate>required-entry validate-url</validate>
+							<depends>
+								<enable_testmode>0</enable_testmode>
+								<active>1</active>
+								<integration_type>window</integration_type>
+							</depends>
+							<comment><![CDATA[<p>Ex: https://Your-Server-Domain-Here/payment/PaymentWindow.jsp</p>]]></comment>
+                        </gatewayurl_window_live> 
+                        <gatewayurl_direct_live translate="label comment">
+                            <label>Gateway URL (Direct)</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>		
+							<validate>required-entry validate-url</validate>
+							<depends>
+								<enable_testmode>0</enable_testmode>
+								<active>1</active>								
+								<integration_type>direct</integration_type>
+							</depends>
+							<comment><![CDATA[<p>Ex: https://Your-Server-Domain-Here/payment/PaymentInterface.jsp</p>]]></comment>
+                        </gatewayurl_direct_live> 
+						<merchant_id_live translate="label">
+                            <label>Merchant ID</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>		
+							<validate>required-entry</validate>
+							<depends>
+								<enable_testmode>0</enable_testmode>
+								<active>1</active>
+							</depends>
+                        </merchant_id_live> 
+						<merchant_password_live translate="label">
+                            <label>Merchant Password</label>
+                            <frontend_type>password</frontend_type> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends>
+								<active>1</active>
+								<enable_testmode>0</enable_testmode>
+							</depends>
+                        </merchant_password_live>						
+                        <gatewayurl_window_test translate="label comment">
+                            <label>Gateway URL (Window)</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>		
+							<validate>required-entry validate-url</validate>
+							<depends>
+								<enable_testmode>1</enable_testmode>
+								<active>1</active>
+								<integration_type>window</integration_type>
+							</depends>
+							<comment><![CDATA[<p>Ex: https://Your-Server-Domain-Here/payment/PaymentWindow.jsp</p>]]></comment>
+                        </gatewayurl_window_test> 
+                        <gatewayurl_direct_test translate="label comment">
+                            <label>Gateway URL (Direct)</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>		
+							<validate>required-entry validate-url</validate>
+							<depends>
+								<enable_testmode>1</enable_testmode>
+								<active>1</active>								
+								<integration_type>direct</integration_type>
+							</depends>
+							<comment><![CDATA[<p>Ex: https://Your-Server-Domain-Here/payment/PaymentInterface.jsp</p>]]></comment>
+                        </gatewayurl_direct_test>
+						<merchant_id_test translate="label">
+                            <label>Merchant ID</label>
+                            <frontend_type>text</frontend_type> 
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends>
+								<enable_testmode>1</enable_testmode>
+								<active>1</active>
+							</depends>
+                        </merchant_id_test> 
+						<merchant_password_test translate="label">
+                            <label>Merchant Password</label>
+                            <frontend_type>password</frontend_type> 
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<validate>required-entry</validate>
+							<depends>
+								<enable_testmode>1</enable_testmode>
+								<active>1</active>
+							</depends>
+                        </merchant_password_test>
+						<paymentmethod translate="label">
+                            <label>Payment Method</label>
+                            <frontend_type>select</frontend_type> 
+                            <source_model>infinitiumepayment/system_config_source_payment_paymentmethod</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<depends>
+								<active>1</active>
+							</depends>
+                        </paymentmethod> 
+						<transaction translate="label">
+                            <label>Transaction Type</label>
+                            <frontend_type>select</frontend_type> 
+                            <source_model>infinitiumepayment/system_config_source_payment_transaction</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+							<depends>
+								<active>1</active>
+							</depends>
+                        </transaction> 
+                        <cctypes translate="label">
+                            <label>Credit Card Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>infinitiumepayment/system_config_source_payment_cardtype</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+							<depends>
+								<active>1</active>
+							</depends>
+                        </cctypes>
+                        <order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_new</source_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+							<depends>
+								<active>1</active>
+							</depends>
+                        </order_status>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <frontend_class>validate-number</frontend_class>
+							<depends>
+								<active>1</active>
+							</depends>
+                        </sort_order>                      
+                    </fields>
+                </epayment> 
+            </groups>
+        </payment>
+    </sections>
+</config>

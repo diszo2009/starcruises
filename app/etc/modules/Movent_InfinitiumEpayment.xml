@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Movent
+ * @package    Movent_InfinitiumEpayment
+ * @author     Diszo Sasil (diszo.sasil@movent.com) 
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Movent_InfinitiumEpayment>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Movent_InfinitiumEpayment>
+    </modules>
+</config> 

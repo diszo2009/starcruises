@@ -10,6 +10,7 @@ window.open("http://gentingtravel.starcruises.com")
 	$offset = Mage::getStoreConfig('custom/cruise_pickup/days_count');
     $isEnabled = Mage::getStoreConfig('custom/cruise_pickup/enabled');
     $isBlurbEnabled = Mage::getStoreConfig('custom/cruise_pickup/blurb_enabled');
+	$isCruiseEnabled = Mage::getStoreConfig('custom/cruise_pickup/cruise_enabled');
 	if($offset == ""){
 		$currDate = "+1d";
 	}else{
@@ -96,12 +97,16 @@ window.open("http://gentingtravel.starcruises.com")
 				</div>
 			</li>	
 		</ul>
+		
+		<?php if($isCruiseEnabled) : ?>
 		<div class="form-list" style="width:300px;float:left;">
-					<label for="cruise-reservation-number-<?php echo $pickupCounter?>"><?php echo $this->__('Cruise Reservation Number:')?></label>
-					<div class="input-box">
-						<input type="text" id="cruise-reservation-number-<?php echo $pickupCounter?>"  name="cruise-reservation-number[<?php echo $pickupCounter?>]" value="<?php echo $this->getCruiseReservationNumber($pickupCounter);?>"/>
-					</div>
+				<label for="cruise-reservation-number-<?php echo $pickupCounter?>"><?php echo $this->__('Cruise Reservation Number:')?></label>
+				<div class="input-box">
+					<input type="text" id="cruise-reservation-number-<?php echo $pickupCounter?>"  name="cruise-reservation-number[<?php echo $pickupCounter?>]" value="<?php echo $this->getCruiseReservationNumber($pickupCounter);?>"/>
+				</div>
 		</div>
+		<?php endif; ?>
+		
         <?php if($isBlurbEnabled) : ?>
         <br/>
 		<div><?php echo $this->__('No cruise booking yet?')?></div>

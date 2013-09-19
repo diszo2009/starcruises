@@ -1,8 +1,8 @@
 <dl class="sp-methods" id="checkout-payment-method-load">
-<?php 
-    $methods = $this->getMethods();
-    $oneMethod = count($methods) <= 1 ? true : false;	
-	$DRSFlag = $this->getFlag(); 
+<?php
+$methods = $this -> getMethods();
+$oneMethod = count($methods) <= 1 ? true : false;
+//$DRSFlag = $this->getFlag();
 ?>
  
 
@@ -11,7 +11,7 @@
 		$_code = $_method->getCode();
 		
 		// Only DRS user(s) can use checkmo/ccsave
-		if (!$DRSFlag && $_code == "checkmo") continue;			
+		//if (!$DRSFlag && $_code == "checkmo") continue;			
 ?>
  
 	<dt>
@@ -33,13 +33,6 @@
 <?php //endif; ?>
 </dl>
 
-<?php echo $this->getChildChildHtml('additional'); ?>
-<script type="text/javascript">
-//<![CDATA[
-<?php echo $this->getChildChildHtml('scripts'); ?>
-payment.init();
-<?php if (is_string($oneMethod)): ?>
-    payment.switchMethod('<?php echo $oneMethod ?>');
-<?php endif; ?>
-//]]>
-</script>
+<?php echo $this -> getChildChildHtml('additional'); ?>
+<script type="text/javascript">//<![CDATA[<?php echo $this -> getChildChildHtml('scripts'); ?>payment.init();<?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');<?php endif; ?>//]]></script>

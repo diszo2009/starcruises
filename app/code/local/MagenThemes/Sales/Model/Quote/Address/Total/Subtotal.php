@@ -50,6 +50,7 @@ class MagenThemes_Sales_Model_Quote_Address_Total_Subtotal extends Mage_Sales_Mo
             	->setData('points',$finalPrice*$exchange_rate)
                 ->setBaseOriginalPrice($finalPrice);
             $item->calcRowTotal();
+			
         } else if (!$quoteItem->getParentItem()) {
             $finalPrice = $product->getFinalPrice($quoteItem->getQty());
             $item->setPrice($finalPrice)

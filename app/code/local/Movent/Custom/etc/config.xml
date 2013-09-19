@@ -72,6 +72,7 @@
                 <enabled>1</enabled>
                 <days_count>2</days_count>
                 <blurb_enabled>1</blurb_enabled>
+                <cruise_enabled>1</cruise_enabled>
             </cruise_pickup>
 			<stargenting>
 				<wsdl_enabled>0</wsdl_enabled>

@@ -86,6 +86,7 @@ class Movent_Starpay_Model_Api_Request extends Mage_Payment_Model_Method_Cc
 	protected function getSignature()
 	{
 		$append   		 	= "##";		
+		//$transaction_id  	= $this->getOrder()->getIncrementId() != '' ?  $this->getOrder()->getIncrementId() : '0';
 		$transaction_id  	= '0';
 		
 		$encrypt = $append . $this->_starpay_config->getMerchantId().

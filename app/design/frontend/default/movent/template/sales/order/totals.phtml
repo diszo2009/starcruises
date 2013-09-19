@@ -46,7 +46,7 @@
             <strong><?php echo " / ".number_format($this->getTotalPoints(),2)." SP"; ?></strong>
             <?php else:?>
             <?php echo $this->formatValue($_total) ?>
-            <?php echo " / ".number_format($_total["value"], 2)." SP"; ?>
+            <?php echo " / ".number_format($this->getTotalPoints(), 2)." SP"; ?>
             <?php endif?>
         </td>
     </tr>

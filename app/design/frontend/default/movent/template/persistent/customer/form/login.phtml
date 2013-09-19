@@ -56,10 +56,16 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
 ?>
 <div class="account-login row-fluid show-grid">
     <div class="page-title">
-        <h1><?php echo $this->__('Login or Sign up') ?></h1>
+    	<?php if($formtype != 1): ?>    	
+        	<h1><?php echo $this->__('Login or Sign up') ?></h1>
+        <?php else: ?>
+        	<h1><?php echo $this->__('Login') ?></h1>
+		<?php endif; ?>
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+        
+        <?php if($formtype != 1): ?>
         <div class="col2-set span6">
             <div class="new-users">
                 <div class="content">
@@ -72,11 +78,12 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
                     <button type="button" title="<?php echo $this->__('Sign Up') ?>" class="button" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Sign Up') ?></span></span></button>
                 </div>
             </div>
-        </div>
+        </div>        
+        <?php endif; ?>
+        
         <div class="col2-set span6">
+        	
             <div class="registered-users">
-            	
-            	
             	
                 <div class="content">
                     <h2><?php echo $this->__('MEMBER LOGIN') ?></h2>
@@ -150,7 +157,12 @@ $formtype = Mage::getStoreConfig('custom/loginform/formtype');
 	                    
 	                    
                     <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+                    
+                   
                     <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                    
+                    
+                    
                 </div>
                 
                 

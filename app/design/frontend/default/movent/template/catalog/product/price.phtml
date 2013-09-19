@@ -350,7 +350,7 @@
             <?php if ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 0)): // including ?>
             	
             	<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>
-                <span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price_label"><?php echo $this->__('Price:') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
@@ -372,7 +372,7 @@
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 1)): // incl. + weee ?>
             	
             	<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>
-            	<span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+            	<span class="price_label"><?php echo $this->__('Price:') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
@@ -401,7 +401,7 @@
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 4)): // incl. + weee ?>
                 
                 <?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>
-                <span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price_label"><?php echo $this->__('Price:') ?></span>
                 <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
                 </span>
@@ -430,7 +430,7 @@
             <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 2)): // excl. + weee + final ?>
                 
                 <?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>
-	                <span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+	                <span class="price_label"><?php echo $this->__('Price:') ?></span>
 	                <span class="regular-price"><?php echo $_coreHelper->currency($_price,true,true) ?></span>
 	            <?php endif; ?>
                 
@@ -453,7 +453,7 @@
                 
                 <?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>
                 	<br/>
-	                <span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+	                <span class="price_label"><?php echo $this->__('Price:') ?></span>
 	                <span class="regular-price" id="product-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
 	                    <?php echo $_coreHelper->currency($_price + $_weeeTaxAmount, true, true) ?>
 	                </span>
@@ -494,12 +494,12 @@
             	<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>  		
             		
             		<?php if($_finalPrice == $_price) : ?>
-					<span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+					<span class="price_label"><?php echo $this->__('Price:') ?></span>
 					<span class="regular-price" id="product-price-<?php echo $suffix; ?>">
 					    <?php echo $_coreHelper->currency($_price, true, true) ?>
 					</span>
 					<?php else: ?>						
-						<span class="price_label"><?php echo $this->__('Onboard Price:') ?></span>
+						<span class="price_label"><?php echo $this->__('Price:') ?></span>
 						<span class="regular-price" id="product-price-<?php echo $suffix; ?>">
 						    <?php echo $_coreHelper->currency($_finalPrice, true, true) ?>
 						</span>
@@ -531,7 +531,7 @@
         	
         	<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) : ?>
             <p class="old-price">
-                <span class="price-label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price-label"><?php echo $this->__('Price:') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_regularPrice + $_originalWeeeTaxAmount, true, false) ?>
                 </span>                
@@ -638,7 +638,7 @@
         	
         	<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) : ?>
             <p class="old-price">
-                <span class="price-label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price-label"><?php echo $this->__('Price:') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_regularPrice + $_originalWeeeTaxAmount, true, false) ?>
                 </span>                
@@ -698,7 +698,7 @@
             </p>
         <?php elseif ($_weeeTaxAmount && $_weeeHelper->typeOfDisplay($_product, 4)): // incl. + weee ?>
             <p class="old-price">
-                <span class="price-label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price-label"><?php echo $this->__('Price:') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_regularPrice + $_originalWeeeTaxAmount, true, false) ?>
                 </span>
@@ -777,7 +777,7 @@
             
             <?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) : ?>
             <p class="old-price">
-                <span class="price-label"><?php echo $this->__('Onboard Price:') ?></span>
+                <span class="price-label"><?php echo $this->__('Price:') ?></span>
                 <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
                     <?php echo $_coreHelper->currency($_regularPrice, true, false) ?>
                 </span>                
@@ -852,7 +852,7 @@
                	
 			<?php if($showOption == Movent_Custom_Model_Service::DISPLAY_PRICE_ONLY || $showOption == Movent_Custom_Model_Service::DISPLAY_BOTH) :?>        	
         	    <p class="old-price">
-	                <span class="price-label"><?php echo $this->__('Onboard Price:') ?></span>
+	                <span class="price-label"><?php echo $this->__('Price:') ?></span>
 	                <span class="price" id="old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
 	                    <?php echo $_coreHelper->currency($_regularPrice, true, false) ?>
 	                </span>
